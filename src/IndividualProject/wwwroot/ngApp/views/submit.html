@@ -1,0 +1,46 @@
+﻿<h2>Submit</h2>
+<p>
+    {{controller.message}}
+</p>
+
+<form>
+    <label>Name:</label> <br />
+    <input type="text" id="name"/> <br />
+    <label>Picture URL:</label> <br />
+    <input type="text" id="photo" /> <br />
+    <label>Description:</label> <br />
+    <input type="text" id="info" /> <br />
+    
+    <label>Green Beans <img style="height: 100px;" 
+       src ="http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2013/1/9/0/YW0203H_fresh-green-beans-aka-tom-cruise-green-beans-recipe_s4x3.jpg" alt="Green Beans" /> </label> 
+
+    <input type="checkbox" name="ing" value="green-beans" />
+
+    <label>
+        Fried Chicken <img style="height: 100px;"
+                   src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Fried-Chicken-Leg.jpg" alt="Fried Chicken" />
+    </label>
+
+    <input type="checkbox" name="ing" value="fried-chicken" />
+
+    <label>
+        Mashed Potatoes <img style="height: 100px;"
+                   src="http://cdn2.hubspot.net/hub/131366/file-17138592-jpg/images/mashed_potatoes.jpg" alt="Mashed Potatoes" />
+    </label>
+
+    <input type="checkbox" name="ing" value="mashed potatoes" />
+
+    <label>
+        Salt <img style="height: 100px;"
+                   src="https://upload.wikimedia.org/wikipedia/commons/7/78/Salt_shaker_on_white_background.jpg" alt="Salt" />
+    </label>
+
+    <input type="checkbox" name="ing" value="salt" /> <br />
+
+    <input class="btn btn-primary" type="submit" name="submit"   value="submit" />
+</form>
+
+<div id="result">
+
+
+</div>
