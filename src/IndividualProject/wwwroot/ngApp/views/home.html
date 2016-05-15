@@ -1,4 +1,16 @@
-<h2>Home</h2>
-<p>
-    {{controller.message}}
-</p>
+<form ng-submit="controller.findRecipes($event)">
+    <h2>Ingredients:</h2>
+    <label ng-repeat="ingredient in controller.ingredients">
+        <input type="checkbox" value={{ingredient.id}} data-ingred="{{ingredient.name}}" class="ingredient" name="ingreds"/>
+        {{ingredient.name}}
+    </label>
+    <input type="submit">
+</form>
+
+
+<form>
+    <h2>Categories:</h2>
+    <label ng-repeat="category in controller.categories">
+        <h4>{{category.name}}</h4>
+    </label>
+</form>

@@ -20,3 +20,4 @@ namespace IndividualProject.Models
         public Recipe Recipe { get; set; }
     }
 }
+

@@ -116,11 +116,9 @@ namespace IndividualProject
                      defaults: new { controller = "Home", action = "Index" }
                 );
             });
-
-
             // initialize sample data
             SampleData.Initialize(app.ApplicationServices).Wait();
-
+            
         }
 
         // Entry point for the application.

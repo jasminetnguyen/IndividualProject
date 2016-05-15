@@ -3,25 +3,49 @@
     <title>IndividualProject</title>
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+    
+
+
     <base href="/" />
 </head>
-<body ng-controller="AccountController as account">
+<body >
     <div class="container">
-        <h1>IndividualProject</h1>
-        <div>
-          <a href="/">Home</a> /
-           <a href="/about">About</a>
+        <h1 class="head">
+            Yumblr <i class="fa fa-cutlery" aria-hidden="true">
+            </i>
+        </h1>
 
-           / <a href="/secret">Secret</a> /
-           <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
-           <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
-           <div ng-show="account.isLoggedIn()">
-               [{{account.getUserName()}}]
-           </div> 
+        <div class="row">
+          <div nava">
+               <a href="/" class="nava">Home</a> 
+              <a href="/about" class="nava">
+              About
+              </a> 
+              <a href="/submit" class="nava">
+              Submit a Recipe
+              </a> 
+              <a href="/popular" class="nava">
+              Top 10 Recipes
+              </a> 
+              <a href="/signin" class="nava right">
+              |Sign In|
+              </a>
+             
+          </div>
+         
+
+           
+           
+          
+          
+       
         </div>
-        <hr />
-
+        
         <ui-view></ui-view>
+
     </div>
 
     <!-- Library Files -->
@@ -37,10 +61,6 @@
     <script src="~/ngapp/controllers/controllers.js"></script>
     <script src="~/ngapp/services/services.js"></script>
 
-
-    <!-- Security -->
-    <script src="~/ngapp/controllers/accountcontroller.js"></script>
-    <script src="~/ngapp/services/accountservice.js"></script>
 
 </body>
 </html>

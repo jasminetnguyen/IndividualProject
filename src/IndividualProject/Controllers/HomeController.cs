@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using IndividualProject.Models;
 
 namespace IndividualProject.Controllers
 {
@@ -12,7 +13,7 @@ namespace IndividualProject.Controllers
         {
             return View();
         }
-
+         
 
         public IActionResult Error()
         {

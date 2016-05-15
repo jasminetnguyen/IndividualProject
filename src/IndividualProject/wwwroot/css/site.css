@@ -3,6 +3,24 @@ body {
     padding-bottom: 20px;
 }
 
+.head {
+    font-family: 'futura-pt';
+    font-size: 65px; 
+    color: #386A6B;
+    /*border: 5px double #ffae93; width: 20%;*/
+}
+
+.nava {
+  font-size: 16px;
+  color: #386A6B; 
+  font-weight: bold; 
+  letter-spacing: 2px; 
+  font-family: futura-pt; 
+  text-transform: uppercase;
+  margin-left: 2%;
+  margin-top: 14px;
+  
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -31,4 +49,24 @@ textarea {
     .carousel-caption {
         z-index: 10 !important;
     }
+}
+
+h1 {
+    text-align: center;
+}
+
+search {
+    display: inline-block;
+    
+    
+}
+a:hover {
+color: #ffb2a0;
+text-decoration: none;
+}
+
+
+.right {
+    margin-left: 25%;
+    background-color: #f5f5f5;
 }
