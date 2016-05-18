@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using IndividualProject.Models;
 using IndividualProject.Services;
 using Newtonsoft.Json.Serialization;
+using IndividualProject.Infastructure;
 
 namespace IndividualProject
 {
@@ -50,6 +51,15 @@ namespace IndividualProject
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
+
+            //Services
+            services.AddScoped<CategoryService>();
+            services.AddScoped<RecipeService>();
+            //Repositories
+            services.AddScoped<CategoryRepository>();
+            services.AddScoped<IngredientRepository>();
+            services.AddScoped<RecipeRepository>();
+
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();

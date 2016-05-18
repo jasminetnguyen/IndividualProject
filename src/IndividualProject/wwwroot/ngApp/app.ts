@@ -25,6 +25,12 @@ namespace IndividualProject {
                 controller: IndividualProject.Controllers.SubmitController,
                 controllerAs: 'controller'
             })
+            .state('top', {
+                url: '/top',
+                templateUrl: '/ngApp/views/top.html',
+                controller: IndividualProject.Controllers.TopController,
+                controllerAs: 'controller'
+            })
   
             .state('notFound', {
                 url: '/notFound',

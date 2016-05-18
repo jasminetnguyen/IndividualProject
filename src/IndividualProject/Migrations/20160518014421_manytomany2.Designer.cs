@@ -8,9 +8,10 @@ using IndividualProject.Models;
 namespace IndividualProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160518014421_manytomany2")]
+    partial class manytomany2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -80,6 +81,8 @@ namespace IndividualProject.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
+
+                    b.Property<int?>("RecipeId");
 
                     b.HasKey("Id");
                 });
@@ -218,6 +221,13 @@ namespace IndividualProject.Migrations
                     b.HasKey("UserId", "RoleId");
 
                     b.HasAnnotation("Relational:TableName", "AspNetUserRoles");
+                });
+
+            modelBuilder.Entity("IndividualProject.Models.Ingredient", b =>
+                {
+                    b.HasOne("IndividualProject.Models.Recipe")
+                        .WithMany()
+                        .HasForeignKey("RecipeId");
                 });
 
             modelBuilder.Entity("IndividualProject.Models.IngredientCategory", b =>

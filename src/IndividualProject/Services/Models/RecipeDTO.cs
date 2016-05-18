@@ -1,23 +1,20 @@
-﻿using System;
+﻿using IndividualProject.Models;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IndividualProject.Models
+namespace IndividualProject.Services.Models
 {
-    public class Recipe
+    public class RecipeDTO
     {
         public int Id { get; set; }
 
-        public string AppUserId { get; set; }
-        [ForeignKey("AppUserId")]
         public ApplicationUser AppUser { get; set; }
 
         public string RecipeName { get; set; }
 
-        public IList<IngredientRecipe> Ingredients { get; set; }
+        public IList<IngredientDTO> Ingredients { get; set; }
 
         public string PictureUrl { get; set; }
 

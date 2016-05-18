@@ -5,6 +5,8 @@ using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Data.Entity;
 using IndividualProject.Models;
+using IndividualProject.Services;
+using IndividualProject.Services.Models;
 
 namespace IndividualProject.Controllers
 {
@@ -12,136 +14,136 @@ namespace IndividualProject.Controllers
     [Route("api/Categories")]
     public class CategoriesController : Controller
     {
-        private ApplicationDbContext _context;
+        private CategoryService _service;
 
-        public CategoriesController(ApplicationDbContext context)
+        public CategoriesController(CategoryService service)
         {
-            _context = context;
+            _service = service;
         }
 
         // GET: api/Categories
         [HttpGet]
-        public IEnumerable<Category> GetCategories()
+        public IEnumerable<CategoryDTO> GetCategories()
         {
-            return _context.Categories;
+            return _service.ListAll();
         }
 
         // GET: api/Categories/5
-        [HttpGet("{id}", Name = "GetCategory")]
-        public async Task<IActionResult> GetCategory([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return HttpBadRequest(ModelState);
-            }
+        //[HttpGet("{id}", Name = "GetCategory")]
+        //public async Task<IActionResult> GetCategory([FromRoute] int id)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return HttpBadRequest(ModelState);
+        //    }
 
-            Category category = await _context.Categories.SingleAsync(m => m.Id == id);
+        //    Category category = await _service.Categories.SingleAsync(m => m.Id == id);
 
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
+        //    if (category == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
 
-            return Ok(category);
-        }
+        //    return Ok(category);
+        //}
 
         // PUT: api/Categories/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory([FromRoute] int id, [FromBody] Category category)
-        {
-            if (!ModelState.IsValid)
-            {
-                return HttpBadRequest(ModelState);
-            }
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutCategory([FromRoute] int id, [FromBody] Category category)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return HttpBadRequest(ModelState);
+        //    }
 
-            if (id != category.Id)
-            {
-                return HttpBadRequest();
-            }
+        //    if (id != category.Id)
+        //    {
+        //        return HttpBadRequest();
+        //    }
 
-            _context.Entry(category).State = EntityState.Modified;
+        //    _service.Entry(category).State = EntityState.Modified;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CategoryExists(id))
-                {
-                    return HttpNotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    try
+        //    {
+        //        await _service.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!CategoryExists(id))
+        //        {
+        //            return HttpNotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return new HttpStatusCodeResult(StatusCodes.Status204NoContent);
-        }
+        //    return new HttpStatusCodeResult(StatusCodes.Status204NoContent);
+        //}
 
-        // POST: api/Categories
-        [HttpPost]
-        public async Task<IActionResult> PostCategory([FromBody] Category category)
-        {
-            if (!ModelState.IsValid)
-            {
-                return HttpBadRequest(ModelState);
-            }
+        //// POST: api/Categories
+        //[HttpPost]
+        //public async Task<IActionResult> PostCategory([FromBody] Category category)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return HttpBadRequest(ModelState);
+        //    }
 
-            _context.Categories.Add(category);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (CategoryExists(category.Id))
-                {
-                    return new HttpStatusCodeResult(StatusCodes.Status409Conflict);
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    _service.Categories.Add(category);
+        //    try
+        //    {
+        //        await _service.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateException)
+        //    {
+        //        if (CategoryExists(category.Id))
+        //        {
+        //            return new HttpStatusCodeResult(StatusCodes.Status409Conflict);
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-            return CreatedAtRoute("GetCategory", new { id = category.Id }, category);
-        }
+        //    return CreatedAtRoute("GetCategory", new { id = category.Id }, category);
+        //}
 
-        // DELETE: api/Categories/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCategory([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-            {
-                return HttpBadRequest(ModelState);
-            }
+        //// DELETE: api/Categories/5
+        //[HttpDelete("{id}")]
+        //public async Task<IActionResult> DeleteCategory([FromRoute] int id)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return HttpBadRequest(ModelState);
+        //    }
 
-            Category category = await _context.Categories.SingleAsync(m => m.Id == id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
+        //    Category category = await _service.Categories.SingleAsync(m => m.Id == id);
+        //    if (category == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
 
-            _context.Categories.Remove(category);
-            await _context.SaveChangesAsync();
+        //    _service.Categories.Remove(category);
+        //    await _service.SaveChangesAsync();
 
-            return Ok(category);
-        }
+        //    return Ok(category);
+        //}
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _context.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        _service.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
 
-        private bool CategoryExists(int id)
-        {
-            return _context.Categories.Count(e => e.Id == id) > 0;
-        }
+        //private bool CategoryExists(int id)
+        //{
+        //    return _service.Categories.Count(e => e.Id == id) > 0;
+        //}
     }
 }

@@ -1,0 +1,14 @@
+﻿<h2>Top 10 Recipes</h2>
+<div>
+    <div ng-repeat="recipe in controller.recipes">
+        <h1>{{recipe.recipeName}}</h1>
+        <img ng-src="{{recipe.pictureUrl}}" />
+        <p>{{recipe.dateCreated | date: "MM/dd/yyyy"}}</p>
+        <p>{{recipe.description}}</p>
+        <h2>Ingredients:</h2>
+        <p ng-repeat="ingredient in recipe.ingredients">{{ingredient.name}}</p>
+       
+        
+</div>
+    </div>
+

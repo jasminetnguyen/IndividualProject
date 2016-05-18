@@ -1,16 +1,27 @@
-<form ng-submit="controller.findRecipes($event)">
+<form class="flex-col ingredient-list" ng-submit="controller.findRecipes($event)">
+
+    <h4 style="text-align:center" class="tb">Yumblr answers the question, "What can I make with what I've got?" helping you get the most out of your groceries. Just select your ingredients to instantly find recipes you can make right now.</h4>
+
+    <div class="flex-row f-jc-sb">
+        <div class="flex-col category" ng-repeat="category in controller.categories">
+            <h2>{{category.name}}</h2>
+            <div ng-repeat="ingredient in category.ingredients">
+                <label>
+                    <input type="checkbox" value="{{ingredient.id}}" data-ingred="{{ingredient.name}}" name="ingreds" />
+                    {{ingredient.name}}
+                </label>
+            </div>
+        </div>
+    </div>
+    <input type="submit" />
+</form>
+
+<!--<form ng-submit="controller.findRecipes($event)">
     <h2>Ingredients:</h2>
     <label ng-repeat="ingredient in controller.ingredients">
-        <input type="checkbox" value={{ingredient.id}} data-ingred="{{ingredient.name}}" class="ingredient" name="ingreds"/>
+        <input type="checkbox" value={{ingredient.id}} data-ingred="{{ingredient.name}}" class="ingredient" name="ingreds" />
         {{ingredient.name}}
     </label>
+    <br />
     <input type="submit">
-</form>
-
-
-<form>
-    <h2>Categories:</h2>
-    <label ng-repeat="category in controller.categories">
-        <h4>{{category.name}}</h4>
-    </label>
-</form>
+</form>-->
